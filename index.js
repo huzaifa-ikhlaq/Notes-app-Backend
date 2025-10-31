@@ -41,7 +41,7 @@ app.post("/notes", async (req, res) => {
     }
 });
 
-edit funtionality
+// edit note
 app.put("/notes/:id", async (req, res) => {
     try {
         const { title, tags } = req.body;
