@@ -41,6 +41,20 @@ app.post("/notes", async (req, res) => {
     }
 });
 
+edit funtionality
+app.put("/notes/:id", async (req, res) => {
+    try {
+        const { title, tags } = req.body;
+        const updatedNote = await noteModel.findByIdAndUpdate(req.params.id, { title, tags }, { new: true });
+        if (!updatedNote) {
+            return res.status(404).json({ message: "Note not found" });
+        }
+        res.json(updatedNote);
+    } catch (error) {
+        res.status(500).json({ error: "Failed to update note" });
+    }
+})
+
 app.delete("/notes/:id", async (req, res) => {
     try {
         await noteModel.findByIdAndDelete(req.params.id);
