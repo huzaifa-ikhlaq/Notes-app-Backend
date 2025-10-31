@@ -2,7 +2,7 @@ import express from "express";
 import mongoose from "mongoose";
 import cors from "cors";
 import dotenv from "dotenv";
-import noteModel from "./model/notesModel.js";
+import noteModel from "../model/notesModel.js";
 
 dotenv.config();
 
@@ -66,6 +66,7 @@ app.delete("/notes/:id", async (req, res) => {
 
 
 //   Start server       
-app.listen(port, () => {
-    console.log(`🚀 Server is running on http://localhost:${port}`);
-});
+// app.listen(port, () => {
+//     console.log(`🚀 Server is running on http://localhost:${port}`);
+// });
+export default app;
