@@ -37,7 +37,7 @@ app.post("/notes", async (req, res) => {
         await newNote.save();
         res.status(201).json(newNote);
     } catch (err) {
-        res.status(500).json({ message: err.message });
+        res.status(500).json({ message: " Failed to create note" });
     }
 });
 
@@ -47,11 +47,11 @@ app.put("/notes/:id", async (req, res) => {
         const { title, tags } = req.body;
         const updatedNote = await noteModel.findByIdAndUpdate(req.params.id, { title, tags }, { new: true });
         if (!updatedNote) {
-            return res.status(404).json({ message: "Note not found" });
+            return res.status(404).json({ message: "Note not found " });
         }
         res.json(updatedNote);
     } catch (error) {
-        res.status(500).json({ error: "Failed to update note" });
+        res.status(500).json({ error: "we can not edit note" });
     }
 })
 
@@ -69,3 +69,5 @@ app.delete("/notes/:id", async (req, res) => {
 app.listen(port, () => {
     console.log(`🚀 Server is running on http://localhost:${port}`);
 });
+
+// export default app;
